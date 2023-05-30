@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- <h1>About Auction</h1> -->
+    <script>
+        let str=document.cookie
+        let arr=str.split("=")
+        let result=JSON.parse(arr[1])
+        // console.log(result)
+        // VM1866:2 {status: 'PENDING', caseNumber: 'S230IS9230', date: 'Mar 24, 2023, 5:10:24 PM', fromLocation: 'MG Road Metro Station', toLocation: 'Kodihalli, Bengaluru, Karnataka, India', …}
+        let h1=document.createElement("h1");
+        h1.innerText="Auction Status Result"
+        document.body.append(h1);
+        const cardcontainerDiv =document.createElement("div");
+        cardcontainerDiv.className="cardcontainer"
+        let innerhtml =`<div class="card">
+        <div class="top">
+             <div class="status-top">
+                <div class="status ${result.status.toLowerCase()}">${result.status}</div>
+                <span class="caseNo"><p>${result.caseNumber}</p></span>
+             </div>
+             <div class="date">${result.date}</div>
+        </div>
+        <div class="bottom">
+            <div class="location">
+                <b>${result.fromLocation}</b>
+            </div>
+            <div class="location-address">
+                <P>${result.toLocation}</P>
+            </div>
+            <div class="price">${result.fare}</div>
+        </div>
+        </div>`;
+        const cardDiv= document.createElement("div")
+        cardDiv.className="card"
+        cardDiv.innerHTML=innerhtml;
+        cardcontainerDiv.append(cardDiv);
+        document.body.append(cardcontainerDiv)
+    
+    
+    </script>
+</body>
+</html>
